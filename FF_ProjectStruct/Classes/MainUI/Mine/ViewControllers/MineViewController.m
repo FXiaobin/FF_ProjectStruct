@@ -55,6 +55,7 @@
     if (_topImageView == nil) {
         _topImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -TopEdgesHeight, SCREEN_WIDTH, TopEdgesHeight)];
         _topImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _topImageView.clipsToBounds = YES;
         _topImageView.image = [UIImage imageNamed:@"mine_topBg"];
         
     }
@@ -73,8 +74,16 @@
     
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 30;
+    return section == 0 ? 1 : 16;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return indexPath.section == 0 ? kSCALE(260) : kSCALE(123.0);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -83,6 +92,10 @@
     
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return section == 0 ? kSCALE(100.0) : 0.01;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
