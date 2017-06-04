@@ -86,7 +86,8 @@
     
     if (offy > 0) {
         
-        CGFloat alpha = (offy+64) / height;
+        //CGFloat alpha = (offy+64) / height;
+        CGFloat alpha = offy / height;
         if (alpha > 1.0) {
             alpha = 1.0;
         }
