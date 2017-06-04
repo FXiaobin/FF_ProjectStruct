@@ -54,6 +54,7 @@
 -(UIImageView *)topImageView{
     if (_topImageView == nil) {
         _topImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -TopEdgesHeight, SCREEN_WIDTH, TopEdgesHeight)];
+        //这两句很重要 按比例填充和切割多余部分
         _topImageView.contentMode = UIViewContentModeScaleAspectFill;
         _topImageView.clipsToBounds = YES;
         _topImageView.image = [UIImage imageNamed:@"mine_topBg"];
